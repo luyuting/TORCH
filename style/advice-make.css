@@ -1,0 +1,12 @@
+@charset "utf-8";
+.advice-head {
+	background: #fff;
+	border-bottom: 1px solid #ececec;
+}
+.advice-make {
+	margin-top: 10px;
+}
+.advice-make textarea{
+	height: 270px;
+	resize: none;
+}

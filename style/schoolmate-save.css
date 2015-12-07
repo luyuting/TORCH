@@ -1,0 +1,26 @@
+@charset "utf-8";
+.more {
+	text-align: center;
+	font-size: 18px;
+	padding-top: 5px;
+}
+.more span {
+	font-size: 14px;
+}
+.schoolmate-save {
+	width: calc(100% - 40px);
+	margin: 0 20px 10px;
+	padding: 0 8%;
+	border: 1px solid #e1e1e1;
+	-webkit-box-shadow: 0 0 3px #eee,inset 0 0 3px #fff;
+	box-shadow: 0 0 3px #eee,inset 0 0 3px #fff;
+	background: #fbfbfb;
+	border-radius:7px;
+	
+}
+.schoolmate-save img {
+	width: 40%;
+	display: block;
+	border-radius: 50%;
+	margin: 10px auto 0;
+}
