@@ -1,0 +1,21 @@
+@charset "utf-8";
+.user-info {
+	width: calc(100% - 40px);
+	margin: 0 20px 10px;
+	padding: 0 8%;
+	border: 1px solid #e1e1e1;
+	-webkit-box-shadow: 0 0 3px #eee,inset 0 0 3px #fff;
+	box-shadow: 0 0 3px #eee,inset 0 0 3px #fff;
+	background: #fbfbfb;
+	border-radius:7px;
+	
+}
+.user-info img {
+	width: 40%;
+	display: block;
+	border-radius: 50%;
+	margin: 10px auto 0;
+}
+#userinfo-support_service label {
+	display:block;
+}
