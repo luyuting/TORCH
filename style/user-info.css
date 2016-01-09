@@ -19,3 +19,7 @@
 #userinfo-support_service label {
 	display:block;
 }
+#photo {
+	width: 100%;
+	border-radius: 3px;
+}

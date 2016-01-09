@@ -1,6 +1,7 @@
 <?php 
 	require_once('SchoolMateController.php');
 	require_once('AdviceController.php');
+	require_once('UserInfoController.php');
 	
 	$class_method = explode("/", $_GET['r']);
 	

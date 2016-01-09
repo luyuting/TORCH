@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="description" content="大连理工大学管理与经济学部校友信息采集">
     <title>校友资料</title>
 	<link href="style/bootstrap.min.css" rel="stylesheet">
 	<link href="style/site.css" rel="stylesheet">
@@ -11,24 +12,47 @@
 	<script src="script/bootstrap.min.js"></script>
 	<script>
 		$(function() {
-			$("#userinfo-support_service input[type = 'checkbox']").bind("click", function() {
+			/*$("#userinfo-support_service input[type = 'checkbox']").bind("click", function() {
+
 				if(this.checked == true) {
 					//$(this).parent().after("");
+					
 					console.log($(this).val());
 				}
+			});*/
+			$("#w0").bind("submit", function() {
+				if($("#userinfo-number").val() == "") {
+					$("#userinfo-number").focus();
+					return false;
+				}
 			});
+			
+			$("#userinfo-photo").bind("change", function() {
+				var file = this.files[0];
+				
+				var img = $("#photo")[0];
+				img.file = file;
+				  
+				var reader = new FileReader();  
+				reader.onload = (function(aImg){  
+					return function(e){  
+						aImg.src = e.target.result;  
+					};  
+				})(img);  
+				reader.readAsDataURL(file);  
+				
+			});	
 		});
 	</script>
 <body>
-
 <div class="wrap">
     <div class="container">
 		<div class="user-info">
 			<img src = "images/me.png"/>
-			<form id="w0" action="/schoolmate/web/index.php?r=user-info/info" method="post">
+			<form id="w0" action="controllers/index.php?r=UserInfo/save" method="post" enctype="multipart/form-data">
 				<div class="form-group field-userinfo-openid required">
-					<label class="control-label" for="userinfo-openid">Openid</label>
-					<input type="text" id="userinfo-openid" class="form-control" name="UserInfo[openid]">
+					<!-- <label class="control-label" for="userinfo-openid">Openid</label>-->
+					<input type="hidden" id="userinfo-openid" class="form-control" name="UserInfo[openid]">
 				</div>        
 				<div class="form-group field-userinfo-openid required">
 					<label class="control-label" for="userinfo-name">姓名</label>
@@ -36,7 +60,7 @@
 				</div>   
 				<div class="form-group field-userinfo-year required">
 					<label class="control-label" for="userinfo-year">毕业年份</label>
-					<input type="text" id="userinfo-year" class="form-control" name="UserInfo[year]">
+					<input type="number" id="userinfo-year" class="form-control" name="UserInfo[year]">
 				</div>       
 				<div class="form-group field-userinfo-major required">
 					<label class="control-label" for="userinfo-major">专业</label>
@@ -44,7 +68,7 @@
 				</div>        
 				<div class="form-group field-userinfo-number required">
 					<label class="control-label" for="userinfo-number">学号</label>
-					<input type="text" id="userinfo-number" class="form-control" name="UserInfo[number]">
+					<input type="number" id="userinfo-number" class="form-control" name="UserInfo[number]">
 				</div>        
 				<div class="form-group field-userinfo-degree required">
 					<label class="control-label" for="userinfo-degree">校友类型</label>
@@ -78,11 +102,11 @@
 				</div>        
 				<div class="form-group field-userinfo-email required">
 					<label class="control-label" for="userinfo-email">邮箱</label>
-					<input type="text" id="userinfo-email" class="form-control" name="UserInfo[email]">
+					<input type="email" id="userinfo-email" class="form-control" name="UserInfo[email]">
 				</div>        
 				<div class="form-group field-userinfo-tel required">
 					<label class="control-label" for="userinfo-tel">联系电话</label>
-					<input type="text" id="userinfo-tel" class="form-control" name="UserInfo[tel]">
+					<input type="number" id="userinfo-tel" class="form-control" name="UserInfo[tel]">
 				</div>        
 				<div class="form-group field-userinfo-field required">
 					<label class="control-label" for="userinfo-field">从事领域简述</label>
@@ -92,19 +116,23 @@
 					<label class="control-label" for="userinfo-support_service">可提供的服务</label>
 					<input type="hidden" name="UserInfo[support_service]" value="">
 					<div id="userinfo-support_service">
-					<label><input type="checkbox" name="UserInfo[support_service][]" value="分享坐谈会"> 分享坐谈会</label>
+					<label><input type="checkbox" name="UserInfo[support_service][]" value="分享坐谈会"> 分享坐谈会
+						（如：大学生择业、大学生创业、职业生涯规划、关于实习、关于专业与岗位的对接、HR眼中的简历）</label>
 					<label><input type="checkbox" name="UserInfo[support_service][]" value="生涯人物访谈"> 生涯人物访谈</label>
-					<label><input type="checkbox" name="UserInfo[support_service][]" value="职业生涯规划"> 担任评委</label>
+					<label><input type="checkbox" name="UserInfo[support_service][]" value="担任评委"> 担任评委
+						（如：文艺类、语言表达类、评优、学科竞赛、政论、体育类等）</label>
 					</div>
 				</div>        
 				<div class="form-group field-userinfo-photo required">
 					<label class="control-label" for="userinfo-photo">生活照</label>
-					<input type="hidden" name="UserInfo[photo]" value=""><input type="file" id="userinfo-photo" name="UserInfo[photo]" accept="image/*">
+					<input type="hidden" name="UserInfo[photo]" value=""><input type="file" id="userinfo-photo" name="user-photo" accept="image/*">
 				</div>    
+				<img id = "photo"/>
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary">提交</button>        
 				</div>
 			</form>
+			
 		</div><!-- user-info -->
     </div>
 </div>
