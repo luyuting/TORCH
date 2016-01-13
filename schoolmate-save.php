@@ -45,6 +45,9 @@
 		</script>
 	</head>
 <body>
+<?php 
+	$userinfo = json_decode(str_replace("\\", "", $_GET['userinfo']), true);
+?>
 <div class="wrap">
     <div class="container">
             
